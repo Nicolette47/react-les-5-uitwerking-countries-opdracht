@@ -58,14 +58,23 @@ button {
 }
 
 /* ------------------------------- 4.1. country card --------------------------------------- */
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .country-card {
     margin: 1rem;
+    flex: 1 0 20em;
 }
 
 
 .wrapper {
     display: flex;
     flex-direction: row;
+    gap: 1em;
 }
 
 .country-flag {
@@ -84,4 +93,5 @@ button {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 0.7em;
+    padding-top: 0.5em;
 }

@@ -30,7 +30,7 @@ function App() {
                         <button type="button" onClick={fetchCountries}>Klik hier en laat je verrassen</button>
                     }
 
-                    <div>
+                    <div className="card-container">
                         {countries.map((country) => {
                             return (
                             <div key={country.cca3} className="country-card">
