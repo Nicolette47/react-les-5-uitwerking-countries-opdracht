@@ -34,16 +34,16 @@ function App() {
                         {countries.map((country) => {
                             return (
                             <div key={country.cca3} className="country-card">
-
-                                <img src={country.flags.svg} alt={`Vlag van ${country.name.official}`}
+                                <div className="wrapper">
+                                <img src={country.flags.png} alt={`Vlag van ${country.name.official}`}
                                      className="country-flag"/>
 
 
                                 <h3 className="country-name">{country.name.official}</h3>
+                                </div>
 
-
-                                <p className="country-population">
-                                    has a population of {country.population.toLocaleString()} people
+                                <p>
+                                    has a population of {country.population} people
                                 </p>
                             </div>
                             );

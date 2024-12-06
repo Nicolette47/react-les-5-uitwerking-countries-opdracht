@@ -1,15 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+
 /*////////////////////////
     Table of Contents
     1. Global Styles
     2. Typography
     3. Layout
-        3.1 Reusables
-        3.2 Other
     4. Areas
-        4.1 Header
-        4.2 Introduction
-        etc.
-    5. Media Queries
+        4.1 country card
+
+
 ////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
@@ -33,6 +33,7 @@ p {
     font-weight: bold;
     justify-content: flex-end;
 }
+
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 .outer-container {
@@ -54,4 +55,33 @@ p {
 button {
     width: 5rem;
     align-self: center;
+}
+
+/* ------------------------------- 4.1. country card --------------------------------------- */
+.country-card {
+    margin: 1rem;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.country-flag {
+    width: 3em;
+    height: 2em;
+}
+
+.country-name {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.1em;
+}
+
+.country-card p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 0.7em;
 }
