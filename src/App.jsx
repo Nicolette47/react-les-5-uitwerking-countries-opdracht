@@ -4,6 +4,7 @@ import axios from 'axios';
 import worldmap from './assets/world_map.png';
 import continentColor from './helpers/isContinentColor.js';
 import globe from './assets/wereldbol.png';
+import roamingPopulation from './helpers/roamingpopulation.js';
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
     const [countries, setCountries] = React.useState([]);
     const [showButton, setShowButton] = React.useState(true);
     const [error, toggleError] = React.useState('');
-    const [chosenCountry, setChosenCountry] = React.useState({});
+    const [chosenCountryInfo, setChosenCountryInfo] = React.useState({});
+
 
     async function fetchCountries() {
         toggleError(false);
@@ -40,9 +42,9 @@ function App() {
     async function fetchSingleCountry() {
         try {
             const responseSingle = await axios.get('https://restcountries.com/v3.1/name/nederland')
-            setChosenCountry(responseSingle.data);
-            console.log(responseSingle.data[0].capital);
-            console.log(responseSingle.data[0].name);
+            setChosenCountryInfo(responseSingle.data[0]);
+            console.log(responseSingle.data[0].capital[0]);
+            console.log(responseSingle.data[0].name.common);
         } catch (e) {
             console.log(error);
         }
@@ -98,14 +100,24 @@ function App() {
 
                         <section className="search-function">
 
-                            <img src={globe} alt="wereldbol dat draait" />
+                            <img src={globe} alt="wereldbol dat draait"/>
 
                             <button type="button" onClick={fetchSingleCountry}>dit wordt zoekfunctie</button>
+                            {console.log(chosenCountryInfo)}
+                            <div>
 
-
-
+                                <div className="chosenCountry-wrapper">
+                                    <img src={chosenCountryInfo.flags.png} alt="vlag van gekozen land"/>
+                                    {chosenCountryInfo && <p>{chosenCountryInfo.name.common}</p>}
+                                </div>
+                                <p>{chosenCountryInfo.name.common} is situated in {chosenCountryInfo.subregion} and the
+                                    capital is {chosenCountryInfo.capital}.</p>
+                                <p>It has a population of {roamingPopulation(chosenCountryInfo.population)} million
+                                    people and it borders with {chosenCountryInfo.borders.length} neighboring
+                                    countries.</p>
+                                <p>Websites can be found on {chosenCountryInfo.tld} domain.</p>
+                            </div>
                         </section>
-
                     </main>
                 </div>
             </div>

@@ -40,7 +40,7 @@ h1 {
 
 p {
     font-weight: bold;
-    justify-content: flex-end;
+    padding: 0.5rem 0;
 }
 
 /* ------------------------------- 3. Layout --------------------------------------- */
@@ -161,4 +161,24 @@ p {
 .search-function button {
     padding: 1em;
     align-self: center;
+    margin: 3em;
 }
+
+.chosenCountry-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.5em;
+}
+
+
+.chosenCountry-wrapper img{
+    width: 6em;
+}
+
+.chosenCountry-wrapper p{
+    margin-left: 2em;
+    font-size: 2rem;
+    font-style: initial;
+    font-weight: bold;
+}
+
