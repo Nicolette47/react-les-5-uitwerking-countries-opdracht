@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import worldmap from './assets/world_map.png';
 import continentColor from './helpers/isContinentColor.js';
+import globe from './assets/wereldbol.png';
 
 
 function App() {
@@ -10,12 +11,12 @@ function App() {
     const [countries, setCountries] = React.useState([]);
     const [showButton, setShowButton] = React.useState(true);
     const [error, toggleError] = React.useState('');
+    const [chosenCountry, setChosenCountry] = React.useState([]);
 
     async function fetchCountries() {
         toggleError(false);
         try {
             const response = await axios.get('https://restcountries.com/v3.1/all');
-            console.log(response.data);
             setCountries(response.data);
             setShowButton(false);
         } catch (e) {
@@ -36,17 +37,32 @@ function App() {
     })
 
 
+    async function fetchSingleCountry() {
+        try {
+            const responseSingle = await axios.get('https://restcountries.com/v3.1/name/nederland')
+            setChosenCountry(responseSingle.data);
+            console.log(responseSingle.data[0].capital);
+            console.log(responseSingle.data[0].name);
+        } catch (e) {
+            console.log(error);
+        }
+    }
+
+
     return (
         <>
             <div className="outer-container">
                 <div className="inner-container">
+
                     <header>
                         <img src={worldmap} alt="kaart van de wereld"/>
 
                         <h1>World Regions</h1>
                     </header>
+
                     <main>
-                        <section className="world-regions-section">
+
+                        <section className="country-function">
                             {showButton &&
                                 <button type="button" className="country-button" onClick={fetchCountries}>Klik hier en
                                     laat je verrassen </button>
@@ -77,10 +93,29 @@ function App() {
                                             </div>
                                         </>
                                     );
-                                })
-                                }
+                                })}
                             < /div>
                         </section>
+
+                        <section className="search-function">
+
+                            <img src={globe} alt="wereldbol dat draait" />
+
+                            <button type="button" onClick={fetchSingleCountry}>dit wordt zoekfunctie</button>
+
+
+                            {chosenCountry.map((request) => {
+                            console.log(request)
+                                return (
+                                    <>
+                                        <p>{request.name.official}</p>
+                                        <p>{request.capital[0]}</p>
+                                    </>
+                                );
+                            })}
+                        </section>
+
+
                     </main>
                 </div>
             </div>
