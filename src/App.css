@@ -158,10 +158,16 @@ p {
     width: 25em;
 }
 
-.search-function button {
-    padding: 1em;
-    align-self: center;
-    margin: 3em;
+
+.search-form input {
+    width: 25em;
+    font-size: 1em;
+    padding: 0.6em;
+}
+
+.search-form button {
+    padding: 0.8em;
+    width: 5em;
 }
 
 .chosenCountry-wrapper {
