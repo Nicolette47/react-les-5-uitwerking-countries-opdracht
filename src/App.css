@@ -29,6 +29,12 @@ img {
 }
 
 
+
+/* ------------------------------- 2. Typography -------------------------------- */
+h1 {
+    text-align: center;
+}
+
 p {
     font-weight: bold;
     justify-content: flex-end;
@@ -47,17 +53,19 @@ p {
     border: 2px solid red;
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex-basis: 1200px;
     margin: 0 20px;
     padding: 32px;
 }
 
-button {
-    width: 5rem;
-    align-self: center;
-}
+
 
 /* ------------------------------- 4.1. country card --------------------------------------- */
+.country-button {
+    width: 5rem;
+}
+
 .card-container {
     display: flex;
     flex-direction: row;

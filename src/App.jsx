@@ -24,10 +24,11 @@ function App() {
         }
     }
 
-   countries.sort((a, b) => {
+    countries.sort((a, b) => {
         if (a.population > b.population) {
             return 1;
-        } if (a.population < b.population) {
+        }
+        if (a.population < b.population) {
             return -1;
         } else {
             return 0;
@@ -35,43 +36,52 @@ function App() {
     })
 
 
-
     return (
         <>
             <div className="outer-container">
                 <div className="inner-container">
-                    <img src={worldmap} alt="kaart van de wereld"/>
-                    {showButton &&
-                        <button type="button" onClick={fetchCountries}>Klik hier en laat je verrassen </button>
-                    }
-                    {error && <p className="error-message"> Er is iets mis gegaan met het ophalen van de gegevens.
-                        Probeer het opnieuw </p>
-                    }
+                    <header>
+                        <img src={worldmap} alt="kaart van de wereld"/>
 
-                    <div className="card-container">
+                        <h1>World Regions</h1>
+                    </header>
+                    <main>
+                        <section className="world-regions-section">
+                            {showButton &&
+                                <button type="button" className="country-button" onClick={fetchCountries}>Klik hier en
+                                    laat je verrassen </button>
+                            }
+                            {error &&
+                                <p className="error-message"> Er is iets mis gegaan met het ophalen van de gegevens.
+                                    Probeer het opnieuw </p>
+                            }
 
-                            {countries.map((country) => {
+                            <div className="card-container">
 
-                            return (
-                                <>
+                                {countries.map((country) => {
 
-                                    <div key={country.cca3} className="country-card">
-                                        <div className="wrapper">
-                                            <img src={country.flags.png} alt={`Vlag van ${country.name.official}`}
-                                                 className="country-flag"/>
+                                    return (
+                                        <>
+                                            <div key={country.cca3} className="country-card">
+                                                <div className="wrapper">
+                                                    <img src={country.flags.png}
+                                                         alt={`Vlag van ${country.name.official}`}
+                                                         className="country-flag"/>
 
-                                            <h3 className={`${continentColor(country)} country-name`}>{country.name.official}</h3>
-                                        </div>
+                                                    <h3 className={`${continentColor(country)} country-name`}>{country.name.official}</h3>
+                                                </div>
 
-                                        <p>
-                                            has a population of {country.population} people.
-                                        </p>
-                                    </div>
-                                </>
-                            );
-                        })
-                        }
-                    < /div>
+                                                <p>
+                                                    has a population of {country.population} people.
+                                                </p>
+                                            </div>
+                                        </>
+                                    );
+                                })
+                                }
+                            < /div>
+                        </section>
+                    </main>
                 </div>
             </div>
         </>
