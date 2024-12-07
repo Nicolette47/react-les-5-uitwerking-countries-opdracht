@@ -11,19 +11,20 @@ function App() {
 
     const [countries, setCountries] = React.useState([]);
     const [showButton, setShowButton] = React.useState(true);
-    const [error, toggleError] = React.useState('');
+    const [error, setError] = React.useState('');
     const [chosenCountryInfo, setChosenCountryInfo] = React.useState({});
+    const [searchValue, setSearchValue] = React.useState('');
 
 
     async function fetchCountries() {
-        toggleError(false);
+        setError(false);
         try {
             const response = await axios.get('https://restcountries.com/v3.1/all');
             setCountries(response.data);
             setShowButton(false);
         } catch (e) {
             console.log(error);
-            toggleError(true);
+            setError(true);
         }
     }
 
@@ -39,14 +40,20 @@ function App() {
     })
 
 
-    async function fetchSingleCountry() {
+    async function fetchSingleCountry(event) {
+        event.preventDefault();
+        setError('');
+
+        console.log(searchValue)
+
         try {
-            const responseSingle = await axios.get('https://restcountries.com/v3.1/name/nederland')
+            const responseSingle = await axios.get(`https://restcountries.com/v3.1/name/${searchValue}`);
             setChosenCountryInfo(responseSingle.data[0]);
-            console.log(responseSingle.data[0].capital[0]);
-            console.log(responseSingle.data[0].name.common);
+            //console.log(responseSingle.data[0].capital[0]);
+            //console.log(responseSingle.data[0].name.common);
+            setSearchValue('');
         } catch (e) {
-            console.log(error);
+            console.error(e);
         }
     }
 
@@ -99,24 +106,24 @@ function App() {
                         </section>
 
                         <section className="search-function">
-
+                            <h1>Search Country Information</h1>
                             <img src={globe} alt="wereldbol dat draait"/>
+                            <form className="search-form" onSubmit={fetchSingleCountry}>
+                            <input
+                                type="text"
+                                placeholder="bijvoorbeeld Nederland of Peru"
+                                id="search-field"
+                                name="search"
+                                value={searchValue}
+                                onChange={(event) => {
+                                    setSearchValue(event.target.value);
+                                    console.log(event.target.value);
+                            }}
+                            />
+                            <button type="submit" >zoek</button>
 
-                            <button type="button" onClick={fetchSingleCountry}>dit wordt zoekfunctie</button>
-                            {console.log(chosenCountryInfo)}
-                            <div>
+                            </form>
 
-                                <div className="chosenCountry-wrapper">
-                                    <img src={chosenCountryInfo.flags.png} alt="vlag van gekozen land"/>
-                                    {chosenCountryInfo && <p>{chosenCountryInfo.name.common}</p>}
-                                </div>
-                                <p>{chosenCountryInfo.name.common} is situated in {chosenCountryInfo.subregion} and the
-                                    capital is {chosenCountryInfo.capital}.</p>
-                                <p>It has a population of {roamingPopulation(chosenCountryInfo.population)} million
-                                    people and it borders with {chosenCountryInfo.borders.length} neighboring
-                                    countries.</p>
-                                <p>Websites can be found on {chosenCountryInfo.tld} domain.</p>
-                            </div>
                         </section>
                     </main>
                 </div>
