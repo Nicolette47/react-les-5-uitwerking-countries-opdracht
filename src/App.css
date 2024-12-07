@@ -63,11 +63,13 @@ button {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+
 }
 
 .country-card {
     margin: 1rem;
     flex: 1 0 20em;
+    justify-content: center;
 }
 
 
@@ -86,12 +88,42 @@ button {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 
 .country-card p {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    font-size: 0.7em;
+    font-size: 0.9em;
     padding-top: 0.5em;
+}
+
+.error-message {
+    padding-top: 1em;
+    align-self: center;
+    font-style: italic;
+}
+
+.europe-color {
+    color: #fbc223;
+}
+
+.africa-color {
+    color: #0000ff;
+}
+
+.america-color {
+    color:#00cc00;
+}
+
+.asia-color {
+    color: #ff0000;
+}
+
+.oceania-color {
+    color: #cc0099;
+}
+
+.default-color {
+    color: #000000;
 }
