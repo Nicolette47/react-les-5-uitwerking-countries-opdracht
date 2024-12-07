@@ -24,6 +24,17 @@ function App() {
         }
     }
 
+   countries.sort((a, b) => {
+        if (a.population > b.population) {
+            return 1;
+        } if (a.population < b.population) {
+            return -1;
+        } else {
+            return 0;
+        }
+    })
+
+
 
     return (
         <>
@@ -40,6 +51,7 @@ function App() {
                     <div className="card-container">
 
                             {countries.map((country) => {
+
                             return (
                                 <>
 
