@@ -11,7 +11,7 @@ function App() {
     const [countries, setCountries] = React.useState([]);
     const [showButton, setShowButton] = React.useState(true);
     const [error, toggleError] = React.useState('');
-    const [chosenCountry, setChosenCountry] = React.useState([]);
+    const [chosenCountry, setChosenCountry] = React.useState({});
 
     async function fetchCountries() {
         toggleError(false);
@@ -86,7 +86,6 @@ function App() {
 
                                                     <h3 className={`${continentColor(country)} country-name`}>{country.name.official}</h3>
                                                 </div>
-
                                                 <p>
                                                     has a population of {country.population} people.
                                                 </p>
@@ -104,17 +103,8 @@ function App() {
                             <button type="button" onClick={fetchSingleCountry}>dit wordt zoekfunctie</button>
 
 
-                            {chosenCountry.map((request) => {
-                            console.log(request)
-                                return (
-                                    <>
-                                        <p>{request.name.official}</p>
-                                        <p>{request.capital[0]}</p>
-                                    </>
-                                );
-                            })}
-                        </section>
 
+                        </section>
 
                     </main>
                 </div>
