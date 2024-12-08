@@ -12,6 +12,7 @@ function App() {
     const [countries, setCountries] = React.useState([]);
     const [showButton, setShowButton] = React.useState(true);
     const [error, setError] = React.useState('');
+    const [error2, setError2] = React.useState('');
     const [chosenCountryInfo, setChosenCountryInfo] = React.useState({});
     const [searchValue, setSearchValue] = React.useState('');
 
@@ -42,7 +43,7 @@ function App() {
 
     async function fetchSingleCountry(event) {
         event.preventDefault();
-        setError('');
+        setError(false);
 
         console.log(searchValue)
 
@@ -54,6 +55,7 @@ function App() {
             setSearchValue('');
         } catch (e) {
             console.error(e);
+            setError2(true)
         }
     }
 
@@ -120,11 +122,24 @@ function App() {
                                     console.log(event.target.value);
                             }}
                             />
-                            <button type="submit" >zoek</button>
+                            <button type="submit" >Zoek</button>
+                                {error2 && <p className="error-message"> Geen geldig landennaam. Probeer het opnieuw met de Engelse naam.
+                                </p>}
 
                             </form>
+                            {console.log(chosenCountryInfo)}
+                            <div>
+                                <div className="chosenCountry-wrapper">
+                            {chosenCountryInfo?.flags?.png && <img src={chosenCountryInfo.flags.png} alt={chosenCountryInfo.name.common} />}
+                            {chosenCountryInfo?.name?.common && <h1>{chosenCountryInfo.name.common}</h1>}
+                                </div>
 
-                        </section>
+                            {chosenCountryInfo?.subregion && <p>{chosenCountryInfo.name.common} is situated in {chosenCountryInfo.subregion} and the capital is {chosenCountryInfo.capital} </p>}
+                            {chosenCountryInfo?.population && <p> It has a population of {roamingPopulation(chosenCountryInfo.population)} milion people and it borders with {chosenCountryInfo.borders.length} neighboring countries </p>}
+                            {chosenCountryInfo?.tld && <p>Websites can be found on {chosenCountryInfo.tld} domain´s</p>}
+                            </div>
+                            </section>
+
                     </main>
                 </div>
             </div>
@@ -133,3 +148,4 @@ function App() {
 }
 
 export default App
+

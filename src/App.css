@@ -173,12 +173,14 @@ p {
 .chosenCountry-wrapper {
     display: flex;
     flex-direction: row;
-    margin-bottom: 1.5em;
+    margin-top: 1.5em;
 }
 
 
 .chosenCountry-wrapper img{
+    margin-right: 3em;
     width: 6em;
+    height: 4em;
 }
 
 .chosenCountry-wrapper p{
