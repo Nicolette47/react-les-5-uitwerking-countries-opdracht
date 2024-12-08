@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Layout
+    4. Areas
+        4.1 country card
+        4.2 search function
+ */
+
+
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-size: 16px;
+}
+
+img {
+    width: 100%;
+}
+
+
+
+/* ------------------------------- 2. Typography -------------------------------- */
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin: 1.5rem 0;
+}
+
+p {
+    font-weight: bold;
+    padding: 0.5rem 0;
+}
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+.outer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inner-container {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 1200px;
+    margin: 0 20px;
+    padding: 32px;
+}
+
+
+
+/* ------------------------------- 4.1. country card --------------------------------------- */
+.country-function {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.country-button {
+    width: 15em;
+    padding: 0.5em;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.country-card {
+    margin: 1rem;
+    flex: 1 0 20em;
+    justify-content: center;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.country-flag {
+    width: 3em;
+    height: 2em;
+}
+
+.country-name {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.3em;
+}
+
+.country-card p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 0.9em;
+    padding-top: 0.5em;
+}
+
+.error-message {
+    padding-top: 1em;
+    align-self: center;
+    font-style: italic;
+}
+
+.europe-color {
+    color: #fbc223;
+}
+
+.africa-color {
+    color: #0000ff;
+}
+
+.america-color {
+    color:#00cc00;
+}
+
+.asia-color {
+    color: #ff0000;
+}
+
+.oceania-color {
+    color: #cc0099;
+}
+
+.default-color {
+    color: #000000;
+}
+
+/* ------------------------------- 4.1. search function --------------------------------------- */
+.search-function {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-function img {
+    width: 25em;
+}
+
+
+.search-form input {
+    width: 25em;
+    font-size: 1em;
+    padding: 0.6em;
+}
+
+.search-form button {
+    padding: 0.8em;
+    width: 5em;
+}
+
+.chosenCountry-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.5em;
+}
+
+
+.chosenCountry-wrapper img{
+    margin-right: 3em;
+    width: 6em;
+    height: 4em;
+}
+
+.chosenCountry-wrapper p{
+    margin-left: 2em;
+    font-size: 2rem;
+    font-style: initial;
+    font-weight: bold;
+}
+
